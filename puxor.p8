@@ -7,9 +7,10 @@ function _init()
 
 
 --path var
+ --s for square
  sx=63
  sy=63
- start={sx,sb}
+ start={sx,sy}
  random=rnd(5)
  pathcol=4
  bgcol=13
@@ -21,9 +22,33 @@ end
 
 function _draw()
  cls(bgcol)
-	rectfill(sx,sy,sx+8,sy+8,pathcol)
+	rect(sx,sy,sx+8,sy+8,pathcol)
 
- print(random)
+ findpath()
+-- print(random)
+
+ rect(lx,ly,lx+8,sy+8,pathcol) 
+end
+-->8
+--path logic
+
+function findpath()
+ foreach(start,print)
+ foreach(left,print)
+
+ 
+ --left space
+ 	lx=start[1]-8
+ 	ly=start[2]
+
+ 	left={lx,ly}
+	
+ 
+ --right
+ 
+ --up
+ 
+ --down
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
