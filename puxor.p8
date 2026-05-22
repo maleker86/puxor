@@ -1,18 +1,25 @@
 pico-8 cartridge // http://www.pico-8.com
 version 43
 __lua__
+--do this when brain not mush:
+--https://youtu.be/obzmfxg2ezm?si=d6_yzqla7ociom7h
 
 function _init()
 --map
 
-
 --path var
  --s for square
- sx=63
- sy=63
+ sx=62
+ sy=62
  start={sx,sy}
  random=rnd(5)
  pathcol=4
+ 
+ lcol=3
+ rcol=6
+ ucol=9
+ dcol=12
+ 
  bgcol=13
 end
 
@@ -22,19 +29,30 @@ end
 
 function _draw()
  cls(bgcol)
-	rect(sx,sy,sx+8,sy+8,pathcol)
+ --origin sq
+	rectfill(sx,sy,sx+8,sy+8,pathcol)
 
  findpath()
 -- print(random)
+ --l
+ rect(lx,ly,lx+8,sy+8,lcol)
+ --r
+ rect(rx,ry,rx+8,ry+8,rcol)
+ --u
+ rect(ux,uy,ux+8,uy+8,ucol)
+ --d
+ rect(dx,dy,dx+8,dy+8,dcol) 
 
- rect(lx,ly,lx+8,sy+8,pathcol) 
 end
 -->8
 --path logic
 
 function findpath()
- foreach(start,print)
- foreach(left,print)
+-- foreach(start,print)
+-- foreach(left,print)
+-- foreach(right,print)
+-- foreach(up,print)
+-- foreach(down,print)
 
  
  --left space
@@ -45,10 +63,23 @@ function findpath()
 	
  
  --right
+  rx=start[1]+8
+ 	ry=start[2]
+
+ 	right={rx,ry} 
+
  
  --up
+  ux=start[1]
+ 	uy=start[2]-8
+
+ 	up={ux,uy} 
  
  --down
+  dx=start[1]
+ 	dy=start[2]+8
+
+ 	down={dx,dy} 
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
