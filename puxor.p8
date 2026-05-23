@@ -38,8 +38,7 @@ function _draw()
 	rectfill(sx,sy,sx+7,sy+7,pathcol)
 
 -- print(random)
- drawpath()
- choosepath()
+ drawpath(choosepath())
 end
 -->8
 --paths
@@ -76,18 +75,6 @@ function locatepath()
  	down={dx,dy} 
 end
 
-function drawpath() 
- --l
- rectfill(lx,ly,lx+7,sy+7,lcol)
- --r
- rectfill(rx,ry,rx+7,ry+7,rcol)
- --u
- rectfill(ux,uy,ux+7,uy+7,ucol)
- --d
- rectfill(dx,dy,dx+7,dy+7,dcol) 
-
-end
-
 function choosepath()
   --choose path direction
  n=1
@@ -96,18 +83,42 @@ function choosepath()
  w=4
  
  if random==n then 
-  print("north") 
+  return n 
  elseif random==e then
-  print("east")
+  return e
  elseif random==s then
-  print("south")
+  return s
  elseif random==w then
-  print("west")
+  return w
  else
   print("error")
  end
  
 end
+
+function drawpath(path) 
+ --l
+ if path == w then
+  rectfill(lx,ly,lx+7,sy+7,lcol)
+ end
+ 
+ --r
+ if path == e then
+  rectfill(rx,ry,rx+7,ry+7,rcol)
+ end
+ 
+ --u
+ if path == n then
+  rectfill(ux,uy,ux+7,uy+7,ucol)
+ end
+ 
+ --d
+ if path == s then
+  rectfill(dx,dy,dx+7,dy+7,dcol) 
+ end
+end
+
+
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
